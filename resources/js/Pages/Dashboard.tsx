@@ -97,25 +97,28 @@ export default function Dashboard() {
             {/* 🔹 เปลี่ยนสีพื้นหลังของหน้า */}
             <div className="min-h-screen bg-amber-100 p-4">
 
-                {/* 🔹 ส่วนสรุปยอดรายรับ-รายจ่าย */}
-                <div className="bg-white p-4 mx-4 my-4 rounded-lg shadow-lg">
-                    <div className="flex justify-between text-lg font-semibold">
-                        <span className="text-gray-700">ยอดรวมปัจจุบัน</span>
-                        <span className={totalBalance >= 0 ? "text-green-500" : "text-red-500"}>
-                            {totalBalance >= 0 ? `+฿${totalBalance.toLocaleString()}` : `-฿${Math.abs(totalBalance).toLocaleString()}`}
-                        </span>
+            <div className="flex flex-col items-center justify-center text-lg font-semibold">
+                {/* ✅ ฝั่งขวา: รายได้ + ค่าใช้จ่าย */}
+                <div className="flex justify-between w-full px-8">
+                    <div className="text-left">
+                        <p className="text-gray-500 text-sm">รายได้</p>
+                        <p className="text-green-500 font-bold text-xl">+฿{totalIncome.toLocaleString()}</p>
                     </div>
-                    <div className="flex justify-between text-lg mt-2">
-                        <div className="text-left">
-                            <p className="text-gray-500 text-sm">รายได้</p>
-                            <p className="text-green-500 font-bold">+฿{totalIncome.toLocaleString()}</p>
-                        </div>
-                        <div className="text-right">
-                            <p className="text-gray-500 text-sm">ค่าใช้จ่าย</p>
-                            <p className="text-red-500 font-bold">-฿{Math.abs(totalExpense).toLocaleString()}</p>
-                        </div>
+                    <div className="text-right">
+                        <p className="text-gray-500 text-sm">ค่าใช้จ่าย</p>
+                        <p className="text-red-500 font-bold text-xl">-฿{Math.abs(totalExpense).toLocaleString()}</p>
                     </div>
                 </div>
+
+                {/* ✅ ยอดรวมปัจจุบัน ให้อยู่ตรงกลาง */}
+                <div className="mt-4 text-center w-full">
+                    <p className="text-gray-700 text-sm">ยอดรวมปัจจุบัน</p>
+                    <p className={totalBalance >= 0 ? "text-green-500 text-3xl font-bold" : "text-red-500 text-3xl font-bold"}>
+                        {totalBalance >= 0 ? `+฿${totalBalance.toLocaleString()}` : `-฿${Math.abs(totalBalance).toLocaleString()}`}
+                    </p>
+                </div>
+            </div>
+
 
                 {/* 🔹 รายการธุรกรรมล่าสุด */}
                 <div className="bg-white mx-4 my-4 p-4 rounded-lg shadow-lg">
