@@ -93,6 +93,7 @@ const AddTransaction = () => {
 
             if (response.ok) {
                 window.dispatchEvent(new Event("transactionAdded"));
+                router.visit('/dashboard');
             } else {
                 console.error("❌ บันทึกธุรกรรมล้มเหลว:", result);
             }
